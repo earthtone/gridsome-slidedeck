@@ -1,27 +1,37 @@
 <template>
   <Layout>
-
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
-
-    <h1>Hello, world!</h1>
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
-    </p>
-
-    <p class="home-links">
-      <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
-
+    <ul class="px-4">
+      <li v-for="slide in slides" :key="slide" class="text-5xl text-red-900">
+        <g-link :to="slide" class="hover:underline">{{ slide | depath }}</g-link>
+      </li>
+    </ul>
   </Layout>
 </template>
-
+<page-query>
+  query Slides {
+    slides: allSlide {
+      edges {
+        node {
+          path
+        }
+      }
+    }
+  }
+</page-query>
 <script>
 export default {
   metaInfo: {
     title: 'Hello, world!'
+  },
+  computed: {
+    slides () {
+      return this.$page.slides.edges.map(({ node }) => node.path)
+    }
+  },
+  filters: {
+    depath (s) {
+      return s.replace(/(^\/\w+\/|\/$)/g, '')
+    }
   }
 }
 </script>
