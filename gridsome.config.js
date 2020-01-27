@@ -16,19 +16,15 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: [{
-    use: '@gridsome/source-filesystem',
-    options: {
-      path: 'src/slides/**/*.md',
-      typeName: 'Slide',
-      route: '/slides/:fileInfo__name',
-      remark: {
-        externalLinksTarget: '_blank',
-        externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-        plugins: ['@gridsome/remark-prismjs']
-      }
-    }
-  }],
+  // plugins: [{
+  //   use: '@gridsome/source-filesystem',
+  //   options: {
+  //     path: 'src/slides/**/*.md',
+  //     typeName: 'Slide',
+  //     route: '/slides/:fileInfo__name'
+  //   }
+  // }],
+  plugins: [],
   css: {
     loaderOptions: {
       postcss: {

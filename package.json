@@ -7,11 +7,11 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@earthtone/vue-markdown-lite": "^0.2.2",
     "@fullhuman/postcss-purgecss": "^2.0.5",
-    "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.4.0",
     "gridsome": "^0.7.0",
+    "markdown-it-attrs": "^3.0.1",
     "tailwindcss": "^1.1.4",
     "vue-global-events": "^1.1.2"
   }

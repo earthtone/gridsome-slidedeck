@@ -1,7 +1,10 @@
 <template>
   <section>
     <global-events @keydown.right="next" @keydown.left="prev"/>
-    <article v-html="$page.slide.content" />
+    <!-- <article v-html="$page.slide.content" /> -->
+    <markdown :plugins="plugins">
+      {{ $page.slide.content }}
+    </markdown>
   </section>
 </template>
 <page-query>
@@ -22,7 +25,20 @@
   }
 </page-query>
 <script>
+import Markdown from '@earthtone/vue-markdown-lite'
+import markdownItAttrs from 'markdown-it-attrs'
+
 export default {
+  components: {
+    Markdown
+  },
+  data () {
+    return {
+      plugins: [
+        [markdownItAttrs]
+      ]
+    }
+  },
   methods: {
     next () {
       this.$router.push(this.nextSlide)
